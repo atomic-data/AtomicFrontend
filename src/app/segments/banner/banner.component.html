@@ -1,0 +1,38 @@
+<span>{{ projectName }}</span>
+<span style="flex-grow: 1;"></span>
+<nz-input-group nzSearch nzCompact>
+  <nz-select style="width:20%;" nzPlaceHolder="Input..." [(ngModel)]="selected">
+    <ng-container *ngFor="let option of listOfOption">
+      <nz-option
+        [nzLabel]="option"
+        [nzValue]="option"
+        *ngIf="isNotSelected(option)"
+      ></nz-option>
+    </ng-container>
+  </nz-select>
+
+  <input
+    nz-input
+    [(ngModel)]="searchValue"
+    (ngModelChange)="executeSearch($event)"
+    [nzAutocomplete]="auto"
+    [placeholder]="
+      selected
+        ? 'Type ' + ner.addaword(selected.toLowerCase()) + ' name...'
+        : 'Chose a search mode...'
+    "
+  />
+
+  <button nz-button nzType="primary" nzSearch>
+    <i nz-icon type="search" theme="outline"></i>
+  </button>
+</nz-input-group>
+<nz-autocomplete #auto>
+  <nz-auto-option
+    *ngFor="let option of (searchList$ | async)"
+    [nzValue]="option"
+    >{{ option }}</nz-auto-option
+  >
+</nz-autocomplete>
+
+<button nz-button>Sign In with Github</button>
