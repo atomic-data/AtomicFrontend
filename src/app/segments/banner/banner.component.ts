@@ -1,7 +1,7 @@
 import { NEr } from './../../../tools/n-er.tool';
 import { CompleteResult } from './../../services/complete-result.interface';
 import { AutocompleteService } from './../../services/autocomplete.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {  Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -13,10 +13,11 @@ import { map } from 'rxjs/operators';
 export class BannerComponent {
   public searchValue = '';
   public listOfOption = ['User', 'Organization', 'Project'];
-  public selected = '';
+  public selected = this.listOfOption[0];
 
   public ner = NEr;
 
+  // TODO: Inject the project name with a service
   public projectName = 'Atomic Data Insights for Github';
 
   public searchList$: Observable<string[]>;
@@ -27,11 +28,19 @@ export class BannerComponent {
     );
   }
 
-  executeSearch(value: string): void {
+  public executeCompletion(value: string): void {
     this.completer.input$.next(value);
   }
 
-  isNotSelected(value: string): boolean {
-    return this.selected !== value;
+  public isNotSelected(value: string): boolean {
+    return this.selected.toLowerCase() !== value.toLowerCase();
+  }
+
+  /**
+   * Search through git with the selected mode and research value
+   */
+  public search(): void {
+    // TODO: Execute the search
+    console.log(`Searching ${this.selected} with query "${this.searchValue}"`);
   }
 }

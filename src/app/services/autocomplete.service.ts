@@ -16,6 +16,7 @@ export class AutocompleteService {
     this.output$ = this.input$.pipe(
       filter(search => search !== null && search !== ''),
       mergeMap(search => {
+        // TODO: Use real API
         return this.http.get<CompleteResult[]>(
           `https://api.datamuse.com/words?sp=${search}*&max=10`
         );

@@ -6,7 +6,6 @@
       <nz-option
         [nzLabel]="option"
         [nzValue]="option"
-        *ngIf="isNotSelected(option)"
       ></nz-option>
     </ng-container>
   </nz-select>
@@ -14,7 +13,7 @@
   <input
     nz-input
     [(ngModel)]="searchValue"
-    (ngModelChange)="executeSearch($event)"
+    (ngModelChange)="executeCompletion($event)"
     [nzAutocomplete]="auto"
     [placeholder]="
       selected
@@ -23,7 +22,7 @@
     "
   />
 
-  <button nz-button nzType="primary" nzSearch>
+  <button nz-button nzType="primary" nzSearch (click)="search()">
     <i nz-icon type="search" theme="outline"></i>
   </button>
 </nz-input-group>

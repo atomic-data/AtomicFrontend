@@ -23,7 +23,7 @@ nz-input-group {
   input {
     width:65%;
 
-    &:focus {
+    &:focus, &:not(:placeholder-shown) {
       width: 74.5%;
     }
   }
