@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  height: 3rem;
+
+  align-items: center;
+
+  justify-content: space-between;
+  padding: 0 calc( 2.5rem - 32px );
+
+  border-bottom: solid 1px #eee;
+  box-shadow: 0px 1px 4px #eee;
+}
+
+span {
+  font-family: monospace;
+  font-variant: petite-caps;
+  font-size: 1.5em;
+}
+
+nz-input-group {
+  width: 50%;
+
+  input {
+    width:65%;
+
+    &:focus, &:not(:placeholder-shown) {
+      width: 74.5%;
+    }
+  }
+
+  nz-select {
+    width: 18%;
+  }
+}
