@@ -1,20 +1,23 @@
-import { BannerComponent } from './segments/banner/banner.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BannerComponent} from './segments/banner/banner.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import {AppComponent} from './app.component';
+import {en_US, NgZorroAntdModule, NZ_I18N} from 'ng-zorro-antd';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
+import {SectionComponent} from './segments/section/section.component';
+import {DataTableComponent} from './segments/data-table/data-table.component';
+import {LabelBoxComponent} from './segments/label-box/label-box.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent, BannerComponent
+    AppComponent, BannerComponent, SectionComponent, DataTableComponent, LabelBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

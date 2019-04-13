@@ -1,0 +1,10 @@
+<div class="info">
+  <div *ngFor="let label of labels">
+        <span class="data" [style.background]="label.background" [style.border-color]="label.borderColor">
+          <span>{{label.type}}: {{label.name}}</span>
+        </span>
+  </div>
+  <!-- Force color white/black if 15% < L > 90% -->
+  <!-- L = r,g,b : sum([255*_ for _ in  (r,g,b)]) / 195075 -->
+  <!-- TODO: See how to handle element's bg color -->
+</div>

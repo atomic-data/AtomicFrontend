@@ -1,1 +1,33 @@
 <app-banner></app-banner>
+<app-section [title]="'Overview'" [sectionColor]="'color-a'">
+  <div class="info" *ngFor="let data of overviewData">
+    <span class="data">{{data.data}}</span>
+    <span class="title">{{data.title}}</span>
+  </div>
+</app-section>
+<app-section [title]="'Repositories'" [mainClass]="'nowrap'">
+  <div class="intro">
+    Here is a little automated introduction about your top repositories !
+    <br/>
+    As you can see, you have a great repo
+    <strong>Project Z</strong> topping with <em>12002</em> stars !
+  </div>
+  <app-data-table class="main" [tableData]="repoData"></app-data-table>
+</app-section>
+<app-section [title]="'Top Used Languages'" [sectionColor]="'color-b'" [mainClass]="'nowrap'">
+  <div class="intro">
+    Here is a little automated introduction about your top languages
+    repositories !
+    <br/>
+    Your prefered language seems to be Java !
+  </div>
+  <app-data-table class="main" [tableData]="topLanguagesData"></app-data-table>
+</app-section>
+<app-section [title]="'Your most frequent assigned labels'" [sectionColor]="'color-c'" [mainClass]="'nowrap'">
+  <div class="intro">
+    Here are the most common labels assigned to your issues.
+    <br/>
+    You want to make a lots of features !
+  </div>
+  <app-label-box class="main label" [labels]="labels"></app-label-box>
+</app-section>

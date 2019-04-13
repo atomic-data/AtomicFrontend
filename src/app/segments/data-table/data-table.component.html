@@ -1,0 +1,28 @@
+<div *ngIf="!isList" class="info table">
+  <div>
+    <ng-container *ngFor="let header of tableData.headers">
+      <span class="title">{{header}}</span>
+    </ng-container>
+  </div>
+  <ng-container *ngFor="let row of tableData.rows">
+    <div>
+      <span class="title">{{row.title}}</span>
+      <span class="data">{{row.data}}</span>
+      <ng-container *ngFor="let extra of row.extra">
+        <span class="data">{{extra}}</span>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+<div *ngIf="isList" class="main list">
+  <ng-container *ngFor="let header of tableData.headers">
+    <span>{{header}}</span>
+  </ng-container>
+  <ng-container *ngFor="let row of tableData.rows">
+    <span>{{row.title}}</span>
+    <span>{{row.data}}</span>
+    <ng-container *ngFor="let extra of row.extra">
+      <span>{{extra}}</span>
+    </ng-container>
+  </ng-container>
+</div>

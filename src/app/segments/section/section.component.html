@@ -1,0 +1,7 @@
+<section [class]="'block ' + (sectionColor ? sectionColor : '')">
+  <div class="sec-title">{{title}}</div>
+  <!-- use CSS to add the > before -->
+  <div [class]="'main ' + (mainClass ? mainClass : '')">
+    <ng-content></ng-content>
+  </div>
+</section>
