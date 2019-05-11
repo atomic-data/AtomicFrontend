@@ -39,13 +39,13 @@ export class AppComponent {
   };
 
   public labels: Label[] = [
-    {name: 'feature', type: 'type', background: '#EEEEEE', borderColor: '#EEEEEE'},
-    {name: 'bug/fix', type: 'type', background: '#EEEEEE', borderColor: '#EEEEEE'},
-    {name: 'build & ci', type: 'comp', background: '#c7def8', borderColor: '#c7def8'},
-    {name: 'weeks', type: 'effort3', background: '#000000', borderColor: '#000000'},
-    {name: 'angular-core-team', type: 'hotlist', background: '#d4c5f9', borderColor: '#d4c5f9'},
-    {name: 'hours', type: 'effort1', background: '#bfe5bf', borderColor: '#bfe5bf'},
-    {name: 'high', type: 'freq3', background: '#fbca04', borderColor: '#fbca04'},
-    {name: 'regression', type: 'severity5', background: '#0052cc', borderColor: '#0052cc'},
+    {name: 'type: feature', background: '#EEEEEE', borderColor: '#EEEEEE'},
+    {name: 'type: bug/fix', background: '#EEEEEE', borderColor: '#EEEEEE'},
+    {name: 'comp: build & ci', background: '#c7def8', borderColor: '#c7def8'},
+    {name: 'effort3: weeks', background: '#000000', borderColor: '#000000'},
+    {name: 'hotlist: angular-core-team', background: '#d4c5f9', borderColor: '#d4c5f9'},
+    {name: 'effort1: hours', background: '#bfe5bf', borderColor: '#bfe5bf'},
+    {name: 'freq3: high', background: '#fbca04', borderColor: '#fbca04'},
+    {name: 'severity5: regression', background: '#0052cc', borderColor: '#0052cc'},
   ];
 }

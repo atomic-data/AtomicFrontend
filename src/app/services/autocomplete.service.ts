@@ -1,25 +1,21 @@
-import { CompleteResult } from './complete-result.interface';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { mergeMap, filter } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {filter, mergeMap} from 'rxjs/operators';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutocompleteService {
-  public input$: BehaviorSubject<string>;
-  public output$: Observable<CompleteResult[]>;
+  public input$: BehaviorSubject<[string, string]>;
+  public output$: Observable<string[]>;
 
-  constructor(private http: HttpClient) {
+  constructor(private apiService: ApiService) {
     this.input$ = new BehaviorSubject(null);
     this.output$ = this.input$.pipe(
-      filter(search => search !== null && search !== ''),
-      mergeMap(search => {
-        // TODO: Use real API
-        return this.http.get<CompleteResult[]>(
-          `https://api.datamuse.com/words?sp=${search}*&max=10`
-        );
+      filter(([, search]: [string, string]) => search !== null && search !== ''),
+      mergeMap(([type, search]: [string, string]) => {
+        return apiService.getAutocomplete(type, search);
       })
     );
   }

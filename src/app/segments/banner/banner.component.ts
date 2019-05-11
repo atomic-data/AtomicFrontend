@@ -1,9 +1,8 @@
-import { NEr } from './../../../tools/n-er.tool';
-import { CompleteResult } from './../../services/complete-result.interface';
-import { AutocompleteService } from './../../services/autocomplete.service';
-import { Component, OnInit } from '@angular/core';
-import {  Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {NEr} from '../../../tools/n-er.tool';
+import {AutocompleteService} from '../../services/autocomplete.service';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-banner',
@@ -22,25 +21,25 @@ export class BannerComponent {
 
   public searchList$: Observable<string[]>;
 
-  constructor(private completer: AutocompleteService) {
-    this.searchList$ = completer.output$.pipe(
-      map(results => results.map((obj: CompleteResult) => obj.word))
-    );
+  constructor(private completer: AutocompleteService, private apiService: ApiService) {
+    this.searchList$ = completer.output$;
   }
 
   public executeCompletion(value: string): void {
-    this.completer.input$.next(value);
-  }
-
-  public isNotSelected(value: string): boolean {
-    return this.selected.toLowerCase() !== value.toLowerCase();
+    this.completer.input$.next([this.selected, value]);
   }
 
   /**
    * Search through git with the selected mode and research value
    */
   public search(): void {
-    // TODO: Execute the search
-    console.log(`Searching ${this.selected} with query "${this.searchValue}"`);
+    this.apiService.getAll(this.selected, this.searchValue);
+  }
+
+  /**
+   * Connect to github with OAuth
+   */
+  public connect(): void {
+    this.apiService.getOAuth();
   }
 }
