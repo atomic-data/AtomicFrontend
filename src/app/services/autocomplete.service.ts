@@ -11,7 +11,7 @@ export class AutocompleteService {
   public output$: Observable<string[]>;
 
   constructor(private apiService: ApiService) {
-    this.input$ = new BehaviorSubject(null);
+    this.input$ = new BehaviorSubject(['', ''] as [string, string]);
     this.output$ = this.input$.pipe(
       filter(([, search]: [string, string]) => search !== null && search !== ''),
       mergeMap(([type, search]: [string, string]) => {

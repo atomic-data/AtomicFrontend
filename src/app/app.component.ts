@@ -48,4 +48,6 @@ export class AppComponent {
     {name: 'freq3: high', background: '#fbca04', borderColor: '#fbca04'},
     {name: 'severity5: regression', background: '#0052cc', borderColor: '#0052cc'},
   ];
+
+  userDescription: String = 'Hello<br>Yo';
 }

@@ -34,4 +34,8 @@
   >
 </nz-autocomplete>
 
-<button nz-button (click)="connect()">Sign In with Github</button>
+<button nz-button *ngIf="connected && (connected | async).logged else connectButton" (click)="disconnect()"><img [src]="(connected | async).user.avatarUrl" style="height: 1em;">{{ (connected | async).user.login }}</button>
+<ng-template #connectButton>
+  <button nz-button (click)="connect()">Sign In with Github</button>
+</ng-template>
+

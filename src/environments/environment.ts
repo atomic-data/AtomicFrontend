@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://4ab8d5a1-a9f4-4482-8871-1b218ebef825.mock.pstmn.io'
+  baseUrl: 'https://api.atomic-data.fr'
 };
 
 /*
