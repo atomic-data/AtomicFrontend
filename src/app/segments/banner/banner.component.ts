@@ -34,7 +34,8 @@ export class BannerComponent {
 
   constructor(private completer: AutocompleteService, private apiService: ApiService) {
     this.searchList$ = completer.output$;
-    apiService.getConnection().pipe(shareReplay(1), first()).subscribe(stat => this.connected.next(stat));
+    apiService.getConnection().pipe(shareReplay(1), first())
+      .subscribe(stat => this.connected.next(stat));
   }
 
   public executeCompletion(value: string): void {
@@ -45,8 +46,9 @@ export class BannerComponent {
    * Search through git with the selected mode and research value
    */
   public search(): void {
-    console.log(`Search ${this.selected} ${this.searchValue}`);
-    this.apiService.getAll(this.selected, this.searchValue);
+    this.apiService.getAll(this.selected.toLowerCase(), this.searchValue).pipe().subscribe(info => {
+      console.log(info.contributors);
+    });
   }
 
   /**
