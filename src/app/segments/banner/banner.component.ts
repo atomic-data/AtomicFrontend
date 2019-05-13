@@ -4,6 +4,7 @@ import {Component} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {ApiService} from '../../services/api.service';
 import {first, shareReplay} from 'rxjs/operators';
+import {AppComponent} from '../../app.component';
 
 export interface ConnectionStatus {
   logged: boolean;
@@ -32,7 +33,7 @@ export class BannerComponent {
 
   public connected: Subject<ConnectionStatus> = new BehaviorSubject(null);
 
-  constructor(private completer: AutocompleteService, private apiService: ApiService) {
+  constructor(private completer: AutocompleteService, private apiService: ApiService, private app: AppComponent) {
     this.searchList$ = completer.output$;
     apiService.getConnection().pipe(shareReplay(1), first())
       .subscribe(stat => this.connected.next(stat));
@@ -46,9 +47,7 @@ export class BannerComponent {
    * Search through git with the selected mode and research value
    */
   public search(): void {
-    this.apiService.getAll(this.selected.toLowerCase(), this.searchValue).pipe().subscribe(info => {
-      console.log(info.contributors);
-    });
+    this.apiService.getAll(this.selected.toLowerCase(), this.searchValue);
   }
 
   /**

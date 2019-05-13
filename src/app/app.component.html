@@ -1,7 +1,7 @@
 <app-banner></app-banner>
 <app-section [title]="'Overview'" [sectionColor]="'color-a'">
-  <div class="intro" [innerHTML]="userDescription"></div>
-  <div class="info" *ngFor="let data of overviewData">
+  <div class="intro" [innerHTML]="plopService.userDescription"></div>
+  <div class="info" *ngFor="let data of plopService.overviewData">
     <span class="data">{{data.data}}</span>
     <span class="title">{{data.title}}</span>
   </div>
@@ -13,7 +13,7 @@
     As you can see, you have a great repo
     <strong>Project Z</strong> topping with <em>12002</em> stars !
   </div>
-  <app-data-table class="main" [tableData]="repoData"></app-data-table>
+  <app-data-table class="main" [tableData]="plopService.repoData"></app-data-table>
 </app-section>
 <app-section [title]="'Top Used Languages'" [sectionColor]="'color-b'" [mainClass]="'nowrap'">
   <div class="intro">
@@ -22,7 +22,7 @@
     <br/>
     Your prefered language seems to be Java !
   </div>
-  <app-data-table class="main" [tableData]="topLanguagesData"></app-data-table>
+  <app-data-table class="main" [tableData]="plopService.topLanguages"></app-data-table>
 </app-section>
 <app-section [title]="'Your most frequent assigned labels'" [sectionColor]="'color-c'" [mainClass]="'nowrap'">
   <div class="intro">
@@ -30,5 +30,5 @@
     <br/>
     You want to make a lots of features !
   </div>
-  <app-label-box class="main label" [labels]="labels"></app-label-box>
+  <app-label-box class="main label" [labels]="plopService.labels"></app-label-box>
 </app-section>
