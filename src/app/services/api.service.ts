@@ -78,7 +78,7 @@ export class ApiService {
       };
 
       this.plopService.labels = [
-        {name: 'proto', background: '#EEEEEE', borderColor: '#EEEEEE'},
+        {name: 'Not done for now', background: '#EEEEEE', borderColor: '#EEEEEE'},
       ];
     });
   }

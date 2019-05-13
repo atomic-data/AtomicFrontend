@@ -1,6 +1,6 @@
 <app-banner></app-banner>
 <app-section [title]="'Overview'" [sectionColor]="'color-a'">
-  <div class="intro" [innerHTML]="plopService.userDescription"></div>
+  <div class="intro" style="width: 100%" [innerHTML]="plopService.userDescription"></div>
   <div class="info" *ngFor="let data of plopService.overviewData">
     <span class="data">{{data.data}}</span>
     <span class="title">{{data.title}}</span>
